@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarMelee.Engines;
 using StarMelee.Graphics;
@@ -29,6 +30,10 @@ namespace StarMelee.Infrastructure
                         };
 
             Content.RootDirectory = "_Content";
+
+            IsFixedTimeStep = true;
+
+            TargetElapsedTime = TimeSpan.FromSeconds(1f / 30f);
         }
 
         protected override void Initialize()
