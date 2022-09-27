@@ -1,6 +1,8 @@
-﻿namespace StarMelee.Geometry
+﻿using System;
+
+namespace StarMelee.Geometry
 {
-    public class Size<T>
+    public class Size<T> where T : struct, IComparable<T>
     {
         public T Width { get; }
 

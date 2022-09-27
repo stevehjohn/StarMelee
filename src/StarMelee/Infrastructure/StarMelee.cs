@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using StarMelee.Infrastructure.Configuration;
 using StarMelee.Infrastructure.Utilities;
+using StarMelee.Resources;
 
 namespace StarMelee.Infrastructure
 {
@@ -28,6 +29,8 @@ namespace StarMelee.Infrastructure
         protected override void Initialize()
         {
             IsMouseVisible = false;
+
+            Window.Title = ResourceManager.Instance.GetResource("window-title");
 
             base.Initialize();
         }
