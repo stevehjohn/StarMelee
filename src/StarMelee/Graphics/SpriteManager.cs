@@ -32,11 +32,11 @@ namespace StarMelee.Graphics
             _ships = _contentManager.Load<Texture2D>("ships");
         }
 
-        public void DrawShip(int x, int y, float rotation)
+        public void DrawShip(int shipIndex, int x, int y, float rotation)
         {
             _spriteBatch.Draw(_ships, 
-                              new Vector2(x * _xScale, y * _yScale), 
-                              new Rectangle(0, 0, SpriteConstants.ShipWidth, SpriteConstants.ShipHeight), 
+                              new Vector2(x * _xScale, y * _yScale),
+                              new Rectangle(shipIndex * SpriteConstants.ShipWidth, 0, SpriteConstants.ShipWidth, SpriteConstants.ShipHeight), 
                               Color.White, 
                               rotation, 
                               new Vector2(SpriteConstants.ShipWidth / 2f, SpriteConstants.ShipHeight / 2f), 
