@@ -49,6 +49,7 @@
     <Compile Include="Exceptions\UnknownResolutionException.cs" />
     <Compile Include="GameElements\PlayerType.cs" />
     <Compile Include="GameElements\Ship.cs" />
+    <Compile Include="GameElements\ShipCapabilities.cs" />
     <Compile Include="Geometry\Position.cs" />
     <Compile Include="Geometry\Size.cs" />
     <Compile Include="Graphics\SpriteConstants.cs" />
