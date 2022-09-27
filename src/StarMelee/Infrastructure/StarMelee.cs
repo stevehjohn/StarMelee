@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using StarMelee.Engines;
 using StarMelee.Graphics;
 using StarMelee.Infrastructure.Configuration;
@@ -11,7 +12,9 @@ namespace StarMelee.Infrastructure
     {
         private readonly GraphicsDeviceManager _graphicsDeviceManager;
         
-        private readonly SpriteManager _sprites;
+        private SpriteManager _sprites;
+
+        private SpriteBatch _spriteBatch;
 
         private IEngine _engine;
 
@@ -26,8 +29,6 @@ namespace StarMelee.Infrastructure
                         };
 
             Content.RootDirectory = "_Content";
-
-            _sprites = new SpriteManager(GraphicsDevice);
         }
 
         protected override void Initialize()
@@ -35,6 +36,12 @@ namespace StarMelee.Infrastructure
             IsMouseVisible = false;
 
             Window.Title = ResourceManager.Instance.GetResource("window-title");
+
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            _sprites = new SpriteManager(Content, _spriteBatch);
+            
+            _sprites.LoadSprites();
 
             _engine = new Battle(_sprites);
 
@@ -50,7 +57,13 @@ namespace StarMelee.Infrastructure
 
         protected override void Draw(GameTime gameTime)
         {
+            GraphicsDevice.Clear(Color.Black);
+
+            _spriteBatch.Begin(SpriteSortMode.BackToFront, samplerState: SamplerState.PointClamp);
+
             _engine.Draw();
+
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }

@@ -17,6 +17,7 @@ namespace StarMelee.Engines
 
         public void Draw()
         {
+            _sprites.DrawShip(960, 540);
         }
     }
 }
