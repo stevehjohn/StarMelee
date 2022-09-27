@@ -14,6 +14,8 @@ namespace StarMelee.Infrastructure.Configuration
 
         public bool Windowed { get; set; }
 
+        public string PlayerName { get; set; }
+
         private AppSettings()
         {
         }
