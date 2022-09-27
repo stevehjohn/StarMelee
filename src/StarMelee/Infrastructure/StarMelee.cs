@@ -11,7 +11,7 @@ namespace StarMelee.Infrastructure
     {
         private readonly GraphicsDeviceManager _graphicsDeviceManager;
         
-        private SpriteManager _sprites;
+        private readonly SpriteManager _sprites;
 
         private IEngine _engine;
 
@@ -26,6 +26,8 @@ namespace StarMelee.Infrastructure
                         };
 
             Content.RootDirectory = "_Content";
+
+            _sprites = new SpriteManager(GraphicsDevice);
         }
 
         protected override void Initialize()
@@ -34,14 +36,9 @@ namespace StarMelee.Infrastructure
 
             Window.Title = ResourceManager.Instance.GetResource("window-title");
 
-            base.Initialize();
-
             _engine = new Battle(_sprites);
-        }
 
-        protected override void LoadContent()
-        {
-            _sprites = new SpriteManager(GraphicsDevice);
+            base.Initialize();
         }
 
         protected override void Update(GameTime gameTime)

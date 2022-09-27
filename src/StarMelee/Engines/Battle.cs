@@ -13,12 +13,10 @@ namespace StarMelee.Engines
 
         public void Update()
         {
-            throw new System.NotImplementedException();
         }
 
         public void Draw()
         {
-            throw new System.NotImplementedException();
         }
     }
 }
