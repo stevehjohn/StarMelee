@@ -34,7 +34,15 @@ namespace StarMelee.Graphics
 
         public void DrawShip(int x, int y, float rotation)
         {
-            _spriteBatch.Draw(_ships, new Vector2(x * _xScale, y * _yScale), new Rectangle(0, 0, 96, 96), Color.White, rotation, new Vector2(48, 48), new Vector2(_xScale, _yScale), SpriteEffects.None, 0);
+            _spriteBatch.Draw(_ships, 
+                              new Vector2(x * _xScale, y * _yScale), 
+                              new Rectangle(0, 0, SpriteConstants.ShipWidth, SpriteConstants.ShipHeight), 
+                              Color.White, 
+                              rotation, 
+                              new Vector2(SpriteConstants.ShipWidth / 2f, SpriteConstants.ShipHeight / 2f), 
+                              new Vector2(_xScale, _yScale), 
+                              SpriteEffects.None, 
+                              0);
         }
     }
 }
