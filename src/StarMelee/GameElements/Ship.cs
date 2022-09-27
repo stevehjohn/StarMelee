@@ -34,7 +34,7 @@ namespace StarMelee.GameElements
 
         public void RotateRight()
         {
-            Direction += 0.05f;
+            Direction += 0.1f;
 
             if (Direction > Math.PI * 2)
             {
@@ -44,7 +44,7 @@ namespace StarMelee.GameElements
 
         public void RotateLeft()
         {
-            Direction -= 0.05f;
+            Direction -= 0.1f;
 
             if (Direction < 0)
             {
