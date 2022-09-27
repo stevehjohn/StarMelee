@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using StarMelee.Infrastructure.Configuration;
+using StarMelee.Infrastructure.Utilities;
 
 namespace StarMelee.Infrastructure
 {
@@ -12,7 +14,13 @@ namespace StarMelee.Infrastructure
 
         public StarMelee()
         {
-            _graphics = new GraphicsDeviceManager(this);
+            var windowSize = ResolutionResolver.GetResolution(AppSettings.Instance.Resolution);
+
+            _graphics = new GraphicsDeviceManager(this) 
+                        { 
+                            PreferredBackBufferWidth = windowSize.Width,
+                            PreferredBackBufferHeight = windowSize.Height
+                        };
 
             Content.RootDirectory = "_Content";
         }
