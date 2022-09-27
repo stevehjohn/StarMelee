@@ -10,13 +10,21 @@ namespace StarMelee.Graphics
 
         private readonly SpriteBatch _spriteBatch;
 
+        private readonly float _xScale;
+        
+        private readonly float _yScale;
+
         private Texture2D _ships;
 
-        public SpriteManager(ContentManager contentManager, SpriteBatch spriteBatch)
+        public SpriteManager(ContentManager contentManager, SpriteBatch spriteBatch, float xScale, float yScale)
         {
             _contentManager = contentManager;
 
             _spriteBatch = spriteBatch;
+
+            _xScale = xScale;
+
+            _yScale = yScale;
         }
 
         public void LoadSprites()
@@ -24,13 +32,9 @@ namespace StarMelee.Graphics
             _ships = _contentManager.Load<Texture2D>("ships");
         }
 
-        private static float rotation = 0f;
-
-        public void DrawShip(int x, int y)
+        public void DrawShip(int x, int y, float rotation)
         {
-            _spriteBatch.Draw(_ships, new Vector2(x, y), new Rectangle(0, 0, 96, 96), Color.White, rotation, new Vector2(48, 48), Vector2.One, SpriteEffects.None, 0);
-
-            rotation += 0.05f;
+            _spriteBatch.Draw(_ships, new Vector2(x * _xScale, y * _yScale), new Rectangle(0, 0, 96, 96), Color.White, rotation, new Vector2(48, 48), new Vector2(_xScale, _yScale), SpriteEffects.None, 0);
         }
     }
 }

@@ -21,12 +21,12 @@ namespace StarMelee.Infrastructure
 
         public StarMelee()
         {
-            var windowSize = ResolutionResolver.GetResolution(AppSettings.Instance.Resolution);
+            var resolutionInfo = ResolutionResolver.GetResolution(AppSettings.Instance.Resolution);
 
             _graphicsDeviceManager = new GraphicsDeviceManager(this) 
                         { 
-                            PreferredBackBufferWidth = windowSize.Width,
-                            PreferredBackBufferHeight = windowSize.Height
+                            PreferredBackBufferWidth = resolutionInfo.Size.Width,
+                            PreferredBackBufferHeight = resolutionInfo.Size.Height
                         };
 
             Content.RootDirectory = "_Content";
@@ -38,13 +38,15 @@ namespace StarMelee.Infrastructure
 
         protected override void Initialize()
         {
+            var resolutionInfo = ResolutionResolver.GetResolution(AppSettings.Instance.Resolution);
+
             IsMouseVisible = false;
 
             Window.Title = ResourceManager.Instance.GetResource("window-title");
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _sprites = new SpriteManager(Content, _spriteBatch);
+            _sprites = new SpriteManager(Content, _spriteBatch, resolutionInfo.XScale, resolutionInfo.YScale);
             
             _sprites.LoadSprites();
 
@@ -62,7 +64,7 @@ namespace StarMelee.Infrastructure
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(new Color(13, 17, 23));
 
             _spriteBatch.Begin(SpriteSortMode.BackToFront, samplerState: SamplerState.PointClamp);
 
