@@ -42,9 +42,12 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Engines\Battle.cs" />
+    <Compile Include="Engines\IEngine.cs" />
     <Compile Include="Exceptions\UnknownResourceException.cs" />
     <Compile Include="Exceptions\UnknownResolutionException.cs" />
     <Compile Include="Geometry\Size.cs" />
+    <Compile Include="Graphics\SpriteManager.cs" />
     <Compile Include="Infrastructure\Configuration\AppSettings.cs" />
     <Compile Include="Infrastructure\StarMelee.cs" />
     <Compile Include="Infrastructure\EntryPoint.cs" />

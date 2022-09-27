@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using StarMelee.Engines;
+using StarMelee.Graphics;
 using StarMelee.Infrastructure.Configuration;
 using StarMelee.Infrastructure.Utilities;
 using StarMelee.Resources;
@@ -9,15 +9,17 @@ namespace StarMelee.Infrastructure
 {
     public class StarMelee : Game
     {
-        private readonly GraphicsDeviceManager _graphics;
+        private readonly GraphicsDeviceManager _graphicsDeviceManager;
         
-        private SpriteBatch _spriteBatch;
+        private SpriteManager _sprites;
+
+        private IEngine _engine;
 
         public StarMelee()
         {
             var windowSize = ResolutionResolver.GetResolution(AppSettings.Instance.Resolution);
 
-            _graphics = new GraphicsDeviceManager(this) 
+            _graphicsDeviceManager = new GraphicsDeviceManager(this) 
                         { 
                             PreferredBackBufferWidth = windowSize.Width,
                             PreferredBackBufferHeight = windowSize.Height
@@ -33,28 +35,37 @@ namespace StarMelee.Infrastructure
             Window.Title = ResourceManager.Instance.GetResource("window-title");
 
             base.Initialize();
+
+            _engine = new Battle(_sprites);
         }
 
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            _sprites = new SpriteManager(GraphicsDevice);
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            {
-                Exit();
-            }
+            _engine.Update();
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            _engine.Draw();
 
             base.Draw(gameTime);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _graphicsDeviceManager.Dispose();
+            }
+
+            base.Dispose(disposing);
         }
     }
 }
