@@ -52,6 +52,7 @@
     <Compile Include="Graphics\SpriteConstants.cs" />
     <Compile Include="Graphics\SpriteManager.cs" />
     <Compile Include="Infrastructure\Configuration\AppSettings.cs" />
+    <Compile Include="Infrastructure\GameConstants.cs" />
     <Compile Include="Infrastructure\StarMelee.cs" />
     <Compile Include="Infrastructure\EntryPoint.cs" />
     <Compile Include="Infrastructure\Utilities\ResolutionResolver.cs" />
