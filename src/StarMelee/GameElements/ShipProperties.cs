@@ -1,10 +1,10 @@
 ﻿namespace StarMelee.GameElements
 {
-    public class ShipCapabilities
+    public class ShipProperties
     {
         public float TurnDelta { get; }
 
-        public ShipCapabilities()
+        public ShipProperties()
         {
             TurnDelta = 0.1f;
         }

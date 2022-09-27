@@ -17,7 +17,7 @@ namespace StarMelee.GameElements
 
         public float Speed { get; set; }
 
-        public ShipCapabilities Capabilities { get; }
+        public ShipProperties Properties { get; }
 
         public Ship(Position<float> startPosition, int shipType, PlayerType playerType, string name)
         {
@@ -33,12 +33,12 @@ namespace StarMelee.GameElements
 
             Speed = 0;
 
-            Capabilities = new ShipCapabilities();
+            Properties = new ShipProperties();
         }
 
         public void RotateRight()
         {
-            Direction += Capabilities.TurnDelta;
+            Direction += Properties.TurnDelta;
 
             if (Direction > Math.PI * 2)
             {
@@ -48,7 +48,7 @@ namespace StarMelee.GameElements
 
         public void RotateLeft()
         {
-            Direction -= Capabilities.TurnDelta;
+            Direction -= Properties.TurnDelta;
 
             if (Direction < 0)
             {
