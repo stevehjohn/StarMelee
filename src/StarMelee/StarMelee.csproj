@@ -46,6 +46,7 @@
     <Compile Include="Engines\IEngine.cs" />
     <Compile Include="Exceptions\UnknownResourceException.cs" />
     <Compile Include="Exceptions\UnknownResolutionException.cs" />
+    <Compile Include="GameElements\PlayerType.cs" />
     <Compile Include="GameElements\Ship.cs" />
     <Compile Include="Geometry\Position.cs" />
     <Compile Include="Geometry\Size.cs" />

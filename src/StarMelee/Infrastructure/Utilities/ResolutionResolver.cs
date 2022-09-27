@@ -11,6 +11,9 @@ namespace StarMelee.Infrastructure.Utilities
 
             switch (resolutionName)
             {
+                case "1440p":
+                    return (new Size<int>(2560, 1440), 2560f / 1920f, 1440f / 1080f);
+
                 case "1080p":
                     return (new Size<int>(1920, 1080), 1, 1);
 

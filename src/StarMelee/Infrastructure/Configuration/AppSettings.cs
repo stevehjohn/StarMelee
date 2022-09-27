@@ -12,6 +12,8 @@ namespace StarMelee.Infrastructure.Configuration
 
         public string Resolution { get; set; }
 
+        public bool Windowed { get; set; }
+
         private AppSettings()
         {
         }

@@ -26,7 +26,8 @@ namespace StarMelee.Infrastructure
             _graphicsDeviceManager = new GraphicsDeviceManager(this) 
                         { 
                             PreferredBackBufferWidth = resolutionInfo.Size.Width,
-                            PreferredBackBufferHeight = resolutionInfo.Size.Height
+                            PreferredBackBufferHeight = resolutionInfo.Size.Height,
+                            IsFullScreen = ! AppSettings.Instance.Windowed
                         };
 
             Content.RootDirectory = "_Content";
