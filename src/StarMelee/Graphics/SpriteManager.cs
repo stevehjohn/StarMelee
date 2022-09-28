@@ -20,6 +20,8 @@ namespace StarMelee.Graphics
 
         private Texture2D _star;
 
+        private Texture2D _background;
+
         public SpriteManager(ContentManager contentManager, SpriteBatch spriteBatch, float xScale, float yScale)
         {
             _contentManager = contentManager;
@@ -38,6 +40,8 @@ namespace StarMelee.Graphics
             _particle = _contentManager.Load<Texture2D>("particle");
 
             _star = _contentManager.Load<Texture2D>("star");
+
+            _background = _contentManager.Load<Texture2D>("background-1");
         }
 
         public void DrawShip(int shipIndex, int x, int y, float rotation)
@@ -74,9 +78,22 @@ namespace StarMelee.Graphics
                               color,
                               0,
                               Vector2.Zero, 
-                              new Vector2(scale, scale),
+                              new Vector2(_xScale * scale, _yScale * scale),
                               SpriteEffects.None,
                               0.1f);
+        }
+
+        public void DrawBackground()
+        {
+            _spriteBatch.Draw(_background,
+                              new Vector2(0, 0),
+                              new Rectangle(0, 0, 1920, 1080),
+                              Color.White * 0.2f,
+                              0,
+                              Vector2.Zero,
+                              new Vector2(_xScale, _yScale),
+                              SpriteEffects.None,
+                              0.0f);
         }
     }
 }
