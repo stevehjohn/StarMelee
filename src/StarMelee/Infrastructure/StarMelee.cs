@@ -1,12 +1,11 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using StarMelee.Engines;
 using StarMelee.Graphics;
 using StarMelee.Infrastructure.Configuration;
 using StarMelee.Infrastructure.Utilities;
 using StarMelee.Resources;
+using System;
 
 namespace StarMelee.Infrastructure
 {
@@ -52,7 +51,7 @@ namespace StarMelee.Infrastructure
             
             _sprites.LoadSprites();
 
-            _engine = new Battle(_sprites);
+            _engine = new Battle(new Renderer(_sprites));
 
             base.Initialize();
         }

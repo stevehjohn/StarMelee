@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace StarMelee.Geometry
+﻿namespace StarMelee.Geometry
 {
     public class SizeI
     {

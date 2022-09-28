@@ -53,6 +53,7 @@
     <Compile Include="GameElements\ShipProperties.cs" />
     <Compile Include="Geometry\PositionF.cs" />
     <Compile Include="Geometry\SizeI.cs" />
+    <Compile Include="Graphics\Renderer.cs" />
     <Compile Include="Graphics\SpriteConstants.cs" />
     <Compile Include="Graphics\SpriteManager.cs" />
     <Compile Include="Infrastructure\Configuration\AppSettings.cs" />
