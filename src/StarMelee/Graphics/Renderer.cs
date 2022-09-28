@@ -18,6 +18,8 @@ namespace StarMelee.Graphics
 
         private readonly Random _random = new Random();
 
+        private PositionF _previousPosition = null;
+
         public Renderer(SpriteManager sprites)
         {
             _sprites = sprites;
@@ -35,7 +37,9 @@ namespace StarMelee.Graphics
 
             DrawParticles(origin);
 
-            DrawStars();
+            DrawStars(focusedShip.Position);
+
+            _previousPosition = focusedShip.Position;
         }
 
         public void AddParticle(Particle particle)
@@ -63,13 +67,45 @@ namespace StarMelee.Graphics
             _particles.RemoveAll(p => p.Opacity <= 0);
         }
 
-        private void DrawStars()
+        private void DrawStars(PositionF focusedShipPosition)
         {
             foreach (var star in _stars)
             {
                 _sprites.DrawStar((int) star.Position.X, (int) star.Position.Y, star.Color, star.Scale);
+            }
 
-                star.Position = new PositionF(star.Position.X, star.Position.Y + star.Scale);
+            if (_previousPosition == null)
+            {
+                return;
+            }
+
+            var dY = _previousPosition.Y - focusedShipPosition.Y;
+
+            var dX = _previousPosition.X - focusedShipPosition.X;
+
+            foreach (var star in _stars)
+            {
+                star.Position = new PositionF(star.Position.X + dX * star.Scale, star.Position.Y + dY * star.Scale);
+
+                if (star.Position.X > GameConstants.ScreenWidth)
+                {
+                    star.Position = new PositionF(0, _random.Next(GameConstants.ScreenHeight));
+                }
+
+                if (star.Position.X < 0)
+                {
+                    star.Position = new PositionF(GameConstants.ScreenWidth, _random.Next(GameConstants.ScreenHeight));
+                }
+
+                if (star.Position.Y > GameConstants.ScreenHeight)
+                {
+                    star.Position = new PositionF(_random.Next(GameConstants.ScreenWidth), 0);
+                }
+
+                if (star.Position.Y < 0)
+                {
+                    star.Position = new PositionF(_random.Next(GameConstants.ScreenWidth), GameConstants.ScreenHeight);
+                }
             }
         }
 
