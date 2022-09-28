@@ -18,6 +18,8 @@ namespace StarMelee.Graphics
 
         private Texture2D _particle;
 
+        private Texture2D _star;
+
         public SpriteManager(ContentManager contentManager, SpriteBatch spriteBatch, float xScale, float yScale)
         {
             _contentManager = contentManager;
@@ -34,6 +36,8 @@ namespace StarMelee.Graphics
             _ships = _contentManager.Load<Texture2D>("ships");
 
             _particle = _contentManager.Load<Texture2D>("particle");
+
+            _star = _contentManager.Load<Texture2D>("star");
         }
 
         public void DrawShip(int shipIndex, int x, int y, float rotation)
