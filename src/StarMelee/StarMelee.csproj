@@ -47,11 +47,12 @@
     <Compile Include="Engines\IEngine.cs" />
     <Compile Include="Exceptions\UnknownResourceException.cs" />
     <Compile Include="Exceptions\UnknownResolutionException.cs" />
+    <Compile Include="Extensions\PositionExtensions.cs" />
     <Compile Include="GameElements\PlayerType.cs" />
     <Compile Include="GameElements\Ship.cs" />
     <Compile Include="GameElements\ShipProperties.cs" />
-    <Compile Include="Geometry\Position.cs" />
-    <Compile Include="Geometry\Size.cs" />
+    <Compile Include="Geometry\PositionF.cs" />
+    <Compile Include="Geometry\SizeI.cs" />
     <Compile Include="Graphics\SpriteConstants.cs" />
     <Compile Include="Graphics\SpriteManager.cs" />
     <Compile Include="Infrastructure\Configuration\AppSettings.cs" />

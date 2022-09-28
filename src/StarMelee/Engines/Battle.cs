@@ -1,4 +1,7 @@
-﻿using StarMelee.Controls;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using StarMelee.Controls;
+using StarMelee.Extensions;
 using StarMelee.GameElements;
 using StarMelee.Geometry;
 using StarMelee.Graphics;
@@ -11,23 +14,42 @@ namespace StarMelee.Engines
 
         private readonly ControlProcessor _controlProcessor;
 
-        private readonly Ship _localShip = new Ship(new Position<float>(0, 0), 0, PlayerType.Local, "Stevo");
+        private readonly List<Ship> _ships = new List<Ship>();
+
+        private readonly Ship _focusedShip;
 
         public Battle(SpriteManager spriteManager)
         {
             _sprites = spriteManager;
 
             _controlProcessor = new ControlProcessor();
+
+            _ships.Add(new Ship(new PositionF(0, 0), 0, PlayerType.Local, "Stevo")
+                       {
+                           Speed = 10
+                       });
+
+            _focusedShip = _ships[0];
         }
 
         public void Update()
         {
-            _controlProcessor.UpdateShipState(_localShip);
+            foreach (var ship in _ships)
+            {
+                if (ship.PlayerType == PlayerType.Local)
+                {
+                    _controlProcessor.UpdateShipState(ship);
+                }
+
+                ship.Position = ship.Position.AdjustPosition(ship.Speed, ship.Direction);
+
+                Debug.WriteLine($"{ship.Position.X}, {ship.Position.Y}");
+            }
         }
 
         public void Draw()
         {
-            _sprites.DrawShip(0, 960, 540, _localShip.Direction);
+            _sprites.DrawShip(0, 960, 540, _focusedShip.Direction);
         }
     }
 }

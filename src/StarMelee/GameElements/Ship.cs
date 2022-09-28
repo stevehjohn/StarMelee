@@ -5,7 +5,7 @@ namespace StarMelee.GameElements
 {
     public class Ship
     {
-        public Position<float> Position { get; }
+        public PositionF Position { get; set; }
 
         public int ShipType { get; }
 
@@ -19,7 +19,7 @@ namespace StarMelee.GameElements
 
         public ShipProperties Properties { get; }
 
-        public Ship(Position<float> startPosition, int shipType, PlayerType playerType, string name)
+        public Ship(PositionF startPosition, int shipType, PlayerType playerType, string name)
         {
             Position = startPosition;
 
