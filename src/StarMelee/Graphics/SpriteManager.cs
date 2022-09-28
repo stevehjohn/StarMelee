@@ -52,8 +52,8 @@ namespace StarMelee.Graphics
         public void DrawParticle(int x, int y, Color color, float opacity, float zIndex)
         {
             _spriteBatch.Draw(_particle, 
-                              new Vector2(x * _xScale, y * _yScale),
-                              new Rectangle(0, 0, 2, 2), 
+                              new Vector2((x - 1) * _xScale, (y - 1) * _yScale),
+                              new Rectangle(0, 0, 3, 3), 
                               color * opacity,
                               0, 
                               new Vector2(SpriteConstants.ShipWidth / 2f, SpriteConstants.ShipHeight / 2f), 

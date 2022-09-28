@@ -31,9 +31,12 @@ namespace StarMelee.Engines
             _ships.Add(new Ship(new PositionF(GameConstants.ArenaWidth / 2f, GameConstants.ArenaHeight / 2f), 0, PlayerType.Local, "Stevo")
                        {
                            Speed = 10,
-                           Deceleration = 0.05f,
-                           Acceleration = 0.2f,
-                           MaxSpeed = 10
+                           Properties =
+                           {
+                               Deceleration = 0.05f,
+                               Acceleration = 0.2f,
+                               MaxSpeed = 10
+                           }
                        });
 
             _ships.Add(new Ship(new PositionF(GameConstants.ArenaWidth / 2f + 200, GameConstants.ArenaHeight / 2f), 1, PlayerType.Cpu, "Badger")
@@ -59,7 +62,7 @@ namespace StarMelee.Engines
 
         private void UpdateShip(Ship ship)
         {
-            ship.Speed -= ship.Deceleration;
+            ship.Speed -= ship.Properties.Deceleration;
 
             if (ship.Speed < 0)
             {
@@ -84,7 +87,7 @@ namespace StarMelee.Engines
             }
 
             // TODO: Make configurable depending on ship thruster location.
-            var thrustOrigin = new PositionF(ship.Position.X + SpriteConstants.ShipWidth / 2f, ship.Position.Y + SpriteConstants.ShipHeight / 2f);
+            var thrustOrigin = new PositionF(ship.Position.X + SpriteConstants.ShipWidth / 2f - 1, ship.Position.Y + SpriteConstants.ShipHeight / 2f);
 
             thrustOrigin = thrustOrigin.AdjustPosition(-47, ship.Direction);
 
@@ -103,7 +106,7 @@ namespace StarMelee.Engines
                 
                 if (hOffset > -2 && hOffset < 2)
                 {
-                    color = Color.LightBlue;
+                    color = Color.White;
                 }
 
                 _renderer.AddParticle(new Particle(new PositionF(thrustOrigin.X + hOffset, thrustOrigin.Y + vOffset), color, 1f, 0.1f, 0.4f));
