@@ -44,5 +44,9 @@ namespace StarMelee.Graphics
                               SpriteEffects.None, 
                               0);
         }
+
+        public void DrawParticle(int x, int y, Color color, float opacity)
+        {
+        }
     }
 }

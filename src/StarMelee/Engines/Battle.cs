@@ -5,7 +5,7 @@ using StarMelee.Geometry;
 using StarMelee.Graphics;
 using StarMelee.Infrastructure;
 using System.Collections.Generic;
-using System.Diagnostics;
+using Microsoft.Xna.Framework;
 
 namespace StarMelee.Engines
 {
@@ -69,6 +69,8 @@ namespace StarMelee.Engines
             }
 
             ship.Position = ship.Position.AdjustPosition(ship.Speed, ship.Direction);
+
+            _renderer.AddParticle(new Particle(new PositionF(ship.Position.X, ship.Position.Y), Color.Red, 1f, 0.05f));
         }
     }
 }

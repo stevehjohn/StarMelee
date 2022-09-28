@@ -48,6 +48,7 @@
     <Compile Include="Exceptions\UnknownResourceException.cs" />
     <Compile Include="Exceptions\UnknownResolutionException.cs" />
     <Compile Include="Extensions\PositionExtensions.cs" />
+    <Compile Include="GameElements\Particle.cs" />
     <Compile Include="GameElements\PlayerType.cs" />
     <Compile Include="GameElements\Ship.cs" />
     <Compile Include="GameElements\ShipProperties.cs" />
