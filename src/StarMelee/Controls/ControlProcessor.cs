@@ -16,6 +16,11 @@ namespace StarMelee.Controls
             {
                 ship.RotateRight();
             }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                ship.Accelerate();
+            }
         }
     }
 }

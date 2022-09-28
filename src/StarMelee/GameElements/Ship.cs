@@ -17,6 +17,12 @@ namespace StarMelee.GameElements
 
         public float Speed { get; set; }
 
+        public float Acceleration { get; set; }
+
+        public float Deceleration { get; set; }
+
+        public float MaxSpeed { get; set; }
+
         public ShipProperties Properties { get; }
 
         public Ship(PositionF startPosition, int shipType, PlayerType playerType, string name)
@@ -53,6 +59,16 @@ namespace StarMelee.GameElements
             if (Direction < 0)
             {
                 Direction += (float) Math.PI * 2;
+            }
+        }
+
+        public void Accelerate()
+        {
+            Speed += Acceleration;
+
+            if (Speed > MaxSpeed)
+            {
+                Speed = MaxSpeed;
             }
         }
     }
