@@ -31,7 +31,7 @@ namespace StarMelee.Graphics
         {
             var origin = new PositionF(focusedShip.Position.X - GameConstants.ScreenWidth / 2f, focusedShip.Position.Y - GameConstants.ScreenHeight / 2f);
 
-            origin = origin.AdjustPosition(focusedShip.Speed * 15, focusedShip.Direction);
+            //origin = origin.AdjustPosition(focusedShip.Speed * 15, focusedShip.Direction);
 
             DrawShips(origin, ships);
 

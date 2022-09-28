@@ -30,18 +30,18 @@ namespace StarMelee.Engines
 
             _ships.Add(new Ship(new PositionF(GameConstants.ArenaWidth / 2f, GameConstants.ArenaHeight / 2f), 0, PlayerType.Local, "Stevo")
                        {
-                           Speed = 10,
+                           Speed = 20,
                            Properties =
                            {
                                Deceleration = 0.05f,
                                Acceleration = 0.2f,
-                               MaxSpeed = 10
+                               MaxSpeed = 20
                            }
                        });
 
             _ships.Add(new Ship(new PositionF(GameConstants.ArenaWidth / 2f + 200, GameConstants.ArenaHeight / 2f), 1, PlayerType.Cpu, "Badger")
                        {
-                           Speed = 8
+                           Speed = 15
                        });
 
             _focusedShip = _ships[0];
