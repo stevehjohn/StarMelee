@@ -47,7 +47,7 @@ namespace StarMelee.Engines
 
         public void Draw()
         {
-            _renderer.Draw(_ships);
+            _renderer.Draw(_focusedShip, _ships);
         }
     }
 }
