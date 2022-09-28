@@ -47,7 +47,7 @@ namespace StarMelee.Graphics
             {
                 particle.Update();
 
-                _sprites.DrawParticle((int) (particle.Position.X - origin.X), (int) (particle.Position.Y - origin.Y), particle.Color, particle.Opacity);
+                _sprites.DrawParticle((int) (particle.Position.X - origin.X), (int) (particle.Position.Y - origin.Y), particle.Color, particle.Opacity, particle.ZIndex);
             }
 
             _particles.RemoveAll(p => p.Opacity <= 0);

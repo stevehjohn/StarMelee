@@ -67,7 +67,7 @@ namespace StarMelee.Infrastructure
         {
             GraphicsDevice.Clear(new Color(13, 17, 23));
 
-            _spriteBatch.Begin(SpriteSortMode.BackToFront, samplerState: SamplerState.PointClamp);
+            _spriteBatch.Begin(SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp);
 
             _engine.Draw();
 

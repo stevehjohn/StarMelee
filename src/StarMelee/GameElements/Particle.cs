@@ -13,12 +13,19 @@ namespace StarMelee.GameElements
 
         public float OpacityDelta { get; }
 
-        public Particle(PositionF position, Color color, float opacity, float opacityDelta)
+        public float ZIndex { get; }
+
+        public Particle(PositionF position, Color color, float opacity, float opacityDelta, float zIndex)
         {
             Position = position;
+
             Color = color;
+
             Opacity = opacity;
+
             OpacityDelta = opacityDelta;
+
+            ZIndex = zIndex;
         }
 
         public void Update()

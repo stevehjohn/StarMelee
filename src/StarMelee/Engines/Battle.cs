@@ -102,7 +102,7 @@ namespace StarMelee.Engines
                 }
 
                 // TODO: Magic numbers... and account for ship's thruster position.
-                _renderer.AddParticle(new Particle(new PositionF(ship.Position.X + 47 + hOffset, ship.Position.Y + 96 + vOffset), color, 1f, 0.1f));
+                _renderer.AddParticle(new Particle(new PositionF(ship.Position.X + 47 + hOffset, ship.Position.Y + 0 + vOffset), color, 1f, 0.1f, 0.4f));
             }
         }
     }

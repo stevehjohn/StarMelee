@@ -46,10 +46,10 @@ namespace StarMelee.Graphics
                               new Vector2(SpriteConstants.ShipWidth / 2f, SpriteConstants.ShipHeight / 2f), 
                               new Vector2(_xScale, _yScale), 
                               SpriteEffects.None, 
-                              0);
+                              0.5f);
         }
 
-        public void DrawParticle(int x, int y, Color color, float opacity)
+        public void DrawParticle(int x, int y, Color color, float opacity, float zIndex)
         {
             _spriteBatch.Draw(_particle, 
                               new Vector2(x * _xScale, y * _yScale),
@@ -59,7 +59,7 @@ namespace StarMelee.Graphics
                               new Vector2(SpriteConstants.ShipWidth / 2f, SpriteConstants.ShipHeight / 2f), 
                               new Vector2(_xScale, _yScale), 
                               SpriteEffects.None,
-                              0);
+                              zIndex);
         }
     }
 }
