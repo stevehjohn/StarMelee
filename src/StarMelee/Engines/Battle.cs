@@ -83,13 +83,18 @@ namespace StarMelee.Engines
                 return;
             }
 
+            // TODO: Make configurable depending on ship thruster location.
+            var thrustOrigin = new PositionF(ship.Position.X + SpriteConstants.ShipWidth / 2f, ship.Position.Y + SpriteConstants.ShipHeight / 2f);
+
+            thrustOrigin = thrustOrigin.AdjustPosition(-47, ship.Direction);
+
             for (var i = 0; i < 20; i++)
             {
                 var color = Color.Red;
 
-                var hOffset = _random.Next(11) - 5;
-                
-                var vOffset = _random.Next(15);
+                var hOffset = _random.Next(15) - 7;
+
+                var vOffset = _random.Next(15) - 7;
 
                 if (hOffset > -4 && hOffset < 4)
                 {
@@ -101,8 +106,7 @@ namespace StarMelee.Engines
                     color = Color.LightBlue;
                 }
 
-                // TODO: Magic numbers... and account for ship's thruster position.
-                _renderer.AddParticle(new Particle(new PositionF(ship.Position.X + 47 + hOffset, ship.Position.Y + 90 + vOffset), color, 1f, 0.1f, 0.4f));
+                _renderer.AddParticle(new Particle(new PositionF(thrustOrigin.X + hOffset, thrustOrigin.Y + vOffset), color, 1f, 0.1f, 0.4f));
             }
         }
     }
