@@ -1,10 +1,9 @@
-﻿using System;
-using StarMelee.Extensions;
+﻿using Microsoft.Xna.Framework;
 using StarMelee.GameElements;
 using StarMelee.Geometry;
 using StarMelee.Infrastructure;
+using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 
 namespace StarMelee.Graphics
 {
@@ -18,7 +17,7 @@ namespace StarMelee.Graphics
 
         private readonly Random _random = new Random();
 
-        private PositionF _previousPosition = null;
+        private PositionF _previousPosition;
 
         public Renderer(SpriteManager sprites)
         {
