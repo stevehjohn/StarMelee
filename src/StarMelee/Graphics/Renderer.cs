@@ -23,7 +23,7 @@ namespace StarMelee.Graphics
 
             origin = origin.AdjustPosition(focusedShip.Speed * 15, focusedShip.Direction);
 
-            DrawShips(origin, focusedShip, ships);
+            DrawShips(origin, ships);
 
             DrawParticles(origin);
         }
@@ -33,7 +33,7 @@ namespace StarMelee.Graphics
             _particles.Add(particle);
         }
 
-        private void DrawShips(PositionF origin, Ship focusedShip, List<Ship> ships)
+        private void DrawShips(PositionF origin, List<Ship> ships)
         {
             foreach (var ship in ships)
             {
@@ -46,6 +46,8 @@ namespace StarMelee.Graphics
             foreach (var particle in _particles)
             {
                 particle.Update();
+
+                _sprites.DrawParticle((int) (particle.Position.X - origin.X), (int) (particle.Position.Y - origin.Y), particle.Color, particle.Opacity);
             }
 
             _particles.RemoveAll(p => p.Opacity <= 0);

@@ -1,4 +1,5 @@
-﻿using StarMelee.Controls;
+﻿using System;
+using StarMelee.Controls;
 using StarMelee.Extensions;
 using StarMelee.GameElements;
 using StarMelee.Geometry;
@@ -18,6 +19,8 @@ namespace StarMelee.Engines
         private readonly List<Ship> _ships = new List<Ship>();
 
         private readonly Ship _focusedShip;
+
+        private readonly Random _random = new Random();
 
         public Battle(Renderer renderer)
         {
@@ -70,7 +73,37 @@ namespace StarMelee.Engines
 
             ship.Position = ship.Position.AdjustPosition(ship.Speed, ship.Direction);
 
-            _renderer.AddParticle(new Particle(new PositionF(ship.Position.X, ship.Position.Y), Color.Red, 1f, 0.05f));
+            AddThrust(ship);
+        }
+
+        private void AddThrust(Ship ship)
+        {
+            if (ship.Speed == 0)
+            {
+                return;
+            }
+
+            for (var i = 0; i < 20; i++)
+            {
+                var color = Color.Red;
+
+                var hOffset = _random.Next(11) - 5;
+                
+                var vOffset = _random.Next(15);
+
+                if (hOffset > -4 && hOffset < 4)
+                {
+                    color = Color.Yellow;
+                }
+                
+                if (hOffset > -2 && hOffset < 2)
+                {
+                    color = Color.LightBlue;
+                }
+
+                // TODO: Magic numbers... and account for ship's thruster position.
+                _renderer.AddParticle(new Particle(new PositionF(ship.Position.X + 47 + hOffset, ship.Position.Y + 96 + vOffset), color, 1f, 0.1f));
+            }
         }
     }
 }
