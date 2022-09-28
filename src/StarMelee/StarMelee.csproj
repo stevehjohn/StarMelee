@@ -52,6 +52,7 @@
     <Compile Include="GameElements\PlayerType.cs" />
     <Compile Include="GameElements\Ship.cs" />
     <Compile Include="GameElements\ShipProperties.cs" />
+    <Compile Include="GameElements\Star.cs" />
     <Compile Include="Geometry\PositionF.cs" />
     <Compile Include="Geometry\SizeI.cs" />
     <Compile Include="Graphics\Renderer.cs" />

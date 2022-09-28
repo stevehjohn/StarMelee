@@ -11,7 +11,7 @@ namespace StarMelee.Graphics
         private readonly SpriteBatch _spriteBatch;
 
         private readonly float _xScale;
-        
+
         private readonly float _yScale;
 
         private Texture2D _ships;
@@ -42,28 +42,41 @@ namespace StarMelee.Graphics
 
         public void DrawShip(int shipIndex, int x, int y, float rotation)
         {
-            _spriteBatch.Draw(_ships, 
+            _spriteBatch.Draw(_ships,
                               new Vector2(x * _xScale, y * _yScale),
-                              new Rectangle(shipIndex * SpriteConstants.ShipWidth, 0, SpriteConstants.ShipWidth, SpriteConstants.ShipHeight), 
-                              Color.White, 
-                              rotation, 
-                              new Vector2(SpriteConstants.ShipWidth / 2f, SpriteConstants.ShipHeight / 2f), 
-                              new Vector2(_xScale, _yScale), 
-                              SpriteEffects.None, 
+                              new Rectangle(shipIndex * SpriteConstants.ShipWidth, 0, SpriteConstants.ShipWidth, SpriteConstants.ShipHeight),
+                              Color.White,
+                              rotation,
+                              new Vector2(SpriteConstants.ShipWidth / 2f, SpriteConstants.ShipHeight / 2f),
+                              new Vector2(_xScale, _yScale),
+                              SpriteEffects.None,
                               0.5f);
         }
 
         public void DrawParticle(int x, int y, Color color, float opacity, float zIndex)
         {
-            _spriteBatch.Draw(_particle, 
+            _spriteBatch.Draw(_particle,
                               new Vector2((x - 1) * _xScale, (y - 1) * _yScale),
-                              new Rectangle(0, 0, 3, 3), 
+                              new Rectangle(0, 0, 3, 3),
                               color * opacity,
-                              0, 
-                              new Vector2(SpriteConstants.ShipWidth / 2f, SpriteConstants.ShipHeight / 2f), 
-                              new Vector2(_xScale, _yScale), 
+                              0,
+                              new Vector2(SpriteConstants.ShipWidth / 2f, SpriteConstants.ShipHeight / 2f),
+                              new Vector2(_xScale, _yScale),
                               SpriteEffects.None,
                               zIndex);
+        }
+
+        public void DrawStar(int x, int y, Color color, float scale)
+        {
+            _spriteBatch.Draw(_star,
+                              new Vector2(x * _xScale, y * _yScale),
+                              new Rectangle(0, 0, 7, 7),
+                              color,
+                              0,
+                              Vector2.Zero, 
+                              new Vector2(scale, scale),
+                              SpriteEffects.None,
+                              0.1f);
         }
     }
 }

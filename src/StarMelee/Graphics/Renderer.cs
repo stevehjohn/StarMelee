@@ -1,8 +1,10 @@
-﻿using StarMelee.Extensions;
+﻿using System;
+using StarMelee.Extensions;
 using StarMelee.GameElements;
 using StarMelee.Geometry;
 using StarMelee.Infrastructure;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 namespace StarMelee.Graphics
 {
@@ -12,9 +14,15 @@ namespace StarMelee.Graphics
 
         private readonly List<Particle> _particles = new List<Particle>();
 
+        private readonly List<Star> _stars = new List<Star>();
+
+        private readonly Random _random = new Random();
+
         public Renderer(SpriteManager sprites)
         {
             _sprites = sprites;
+
+            InitialiseStars();
         }
 
         public void Draw(Ship focusedShip, List<Ship> ships)
@@ -26,6 +34,8 @@ namespace StarMelee.Graphics
             DrawShips(origin, ships);
 
             DrawParticles(origin);
+
+            DrawStars();
         }
 
         public void AddParticle(Particle particle)
@@ -37,7 +47,7 @@ namespace StarMelee.Graphics
         {
             foreach (var ship in ships)
             {
-                _sprites.DrawShip(ship.ShipType, (int) (ship.Position.X - origin.X),  (int) (ship.Position.Y - origin.Y), ship.Direction);
+                _sprites.DrawShip(ship.ShipType, (int) (ship.Position.X - origin.X), (int) (ship.Position.Y - origin.Y), ship.Direction);
             }
         }
 
@@ -51,6 +61,26 @@ namespace StarMelee.Graphics
             }
 
             _particles.RemoveAll(p => p.Opacity <= 0);
+        }
+
+        private void DrawStars()
+        {
+            foreach (var star in _stars)
+            {
+                _sprites.DrawStar((int) star.Position.X, (int) star.Position.Y, star.Color, star.Scale);
+
+                star.Position = new PositionF(star.Position.X, star.Position.Y + star.Scale);
+            }
+        }
+
+        private void InitialiseStars()
+        {
+            for (var i = 0; i < 1_000; i++)
+            {
+                var star = new Star(new PositionF(_random.Next(GameConstants.ScreenWidth), _random.Next(GameConstants.ScreenHeight)), Color.White * ((float) _random.NextDouble() / 2f + 0.25f), (float) _random.NextDouble());
+
+                _stars.Add(star);
+            }
         }
     }
 }
