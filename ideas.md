@@ -1,5 +1,9 @@
 # Ideas to Possibly Incorporate
 
+## Coding Notes
+
+- Make particles work without using the ship offset in Draw()
+
 ## General
 
 ### Loadout
