@@ -30,8 +30,6 @@ namespace StarMelee.Graphics
         {
             var origin = new PositionF(focusedShip.Position.X - GameConstants.ScreenWidth / 2f, focusedShip.Position.Y - GameConstants.ScreenHeight / 2f);
 
-            DrawBackground();
-
             DrawShips(origin, ships);
 
             DrawParticles(origin);
@@ -44,11 +42,6 @@ namespace StarMelee.Graphics
         public void AddParticle(Particle particle)
         {
             _particles.Add(particle);
-        }
-
-        private void DrawBackground()
-        {
-            _sprites.DrawBackground();
         }
 
         private void DrawShips(PositionF origin, List<Ship> ships)
